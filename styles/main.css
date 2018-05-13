@@ -1,1 +1,33 @@
 ::selection { background-color: var(--grayColorWeak); }
+
+/* #region header */
+img.portrait {
+    border: 8px solid var(--darkColor);
+    border-radius: 50%;
+}
+
+div.money-banner {
+    position: relative;
+    width: 600px;
+    height: 50px;
+    margin: 30px auto;
+
+    border-radius: 5px;
+
+    background-color: var(--darkColor);
+}
+
+div.money-banner span.money {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    color: var(--lightColor);
+
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 8px;
+
+    transform: translate(-50%, -50%);
+}
+/* #endregion */
