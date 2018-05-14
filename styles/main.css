@@ -8,10 +8,11 @@ img.portrait {
 
 div.money-banner {
     position: relative;
-    width: 600px;
+    width: 500px;
     height: 50px;
     margin: 30px auto;
 
+    border: 5px solid var(--lightColor);
     border-radius: 5px;
 
     background-color: var(--darkColor);
@@ -29,6 +30,15 @@ div.money-banner span.money {
     letter-spacing: 8px;
 
     transform: translate(-50%, -50%);
+}
+
+div.money-banner.stick {
+    position: fixed;
+    top: 8px;
+    left: 50%;
+
+    transform: translateX(-50%);
+    z-index: 99;
 }
 /* #endregion */
 
@@ -49,3 +59,31 @@ span.cig {
 span.cig::before { content: '$'; }
 
 div.fold.goodie:hover span.cig { right: 0px; }
+
+div.fold.goodie.unaffordable::after {
+    content: "Elon can't afford this";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    padding-top: 120%;
+
+    background-color: red;
+    color: var(--lightColor);
+
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    line-height: normal;
+
+    transform: translate(-50%, -50%);
+    opacity: 0;
+
+    animation-name: fade;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade { to { opacity: 0.7; } }

@@ -1,13 +1,11 @@
 var moneyPanel: any = null;
 
 class Elon {
-    static money: number = 1000000000000000000;
+    static money: number = 19600000000.00;
 
     static Pay(money) {
-
         this.money -= money;
-        console.log(this.money);
-        moneyPanel.textContent = `$${this.money}`;
+        moneyPanel.textContent = `$${this.money.formatMoney(2, '.', ',')}`;
     }
 }
 
@@ -43,6 +41,10 @@ Number.prototype.formatMoney = function(c, d, t) {
 window.addEventListener('load', () => {
     const goodies: Goodie[] = [
         new Goodie("Cup of Coffee", 3.63, "coffee.jpg"),
+        new Goodie("Pencile", 0.36, "pencile.jpg"),
+        new Goodie("Glasses", 39.50, "glasses.jpg"),
+        new Goodie("Canon Camera", 456.00, "canon.jpg"),
+        new Goodie("5 Gum", 1.49, "5gum.jpg"),
         new Goodie("Apple", 800000000.00, "apple.jpg"),
         new Goodie("Clones", 8000000.00, "clone.jpg"),
         new Goodie("Eiffel Tower", 1700000000.00, "eiffel_tower.jpg"),
@@ -50,6 +52,8 @@ window.addEventListener('load', () => {
         new Goodie("Footall Stadium", 1150000000.00, "football_stadium.jpg"),
         new Goodie("Game PC", 700.00, "gamer_pc.jpg"),
         new Goodie("Helicopter", 415000.00, "helicopter.jpg"),
+        new Goodie("Castle", 3412300.00, "castle.jpg"),
+        new Goodie("Private Rocket", 36015000.00, "rocket.jpg"),
         new Goodie("iMac Pro", 4999.00, "imac_pro.jpg"),
         new Goodie("iPhone X", 1149.00, "iphonex.jpg"),
         new Goodie("Private Island", 169727.00, "island.jpg"),
@@ -63,6 +67,7 @@ window.addEventListener('load', () => {
         new Goodie("PS4 Pro", 399.00, "ps4_pro.jpg"),
         new Goodie("The Pyramids", 5000000000.00, "pyramides.jpg"),
         new Goodie("Automata", 95600.06, "robot.jpg"),
+        new Goodie("Portal", 56999631.00, "portal.jpg"),
         new Goodie("Rockstar Games", 6000500000.00, "rockstar_games.png"),
         new Goodie("Submarine", 2000000000.00, "submarine.jpg"),
         new Goodie("Swiss Army Knife", 19.99, "swiss_army_knife.jpg"),
@@ -72,10 +77,11 @@ window.addEventListener('load', () => {
         new Goodie("XBOX One X", 499.00, "xbox_one_x.jpg"),
         new Goodie("Yacht", 275000000.00, "yacht.jpeg")
     ],
-        target = document.getElementById('target');
+        target = document.getElementById('target'),
+        moneyBanner = document.querySelector('div.money-banner');
         
     moneyPanel = document.getElementById('cash');
-    moneyPanel.textContent = `$${Elon.money}`;
+    moneyPanel.textContent = `$${Elon.money.formatMoney(2, '.', ',')}`;
     goodies.forEach((_goodie) => {
         let
             fold = document.createElement('div'),
@@ -101,6 +107,10 @@ window.addEventListener('load', () => {
         button.addEventListener('click', () => {
             if(Elon.money >= _goodie.price)
                 _goodie.Buy();
+            else {
+                fold.classList.add('unaffordable');
+                setTimeout(() => { fold.classList.remove('unaffordable'); }, 2500);
+            }
         });
 
         fold_thumbnail.appendChild(img);
@@ -111,5 +121,13 @@ window.addEventListener('load', () => {
         fold.appendChild(button);
 
         target.appendChild(fold);
+    });
+
+    window.addEventListener('scroll', (e) => {
+        if(window.scrollY >= 375) {
+            moneyBanner.classList.add('stick');
+        } else {
+            moneyBanner.classList.remove('stick');
+        }
     });
 });
