@@ -1,4 +1,4 @@
-const ELONs_NET_WORTH = 1;//19600000000.00;
+const ELONs_NET_WORTH = 19600000000.00;
 var
     goodies: Goodie[],
     moneyPanel: any = null,

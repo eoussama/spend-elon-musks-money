@@ -1,4 +1,4 @@
-var ELONs_NET_WORTH = 1; //19600000000.00;
+var ELONs_NET_WORTH = 19600000000.00;
 var goodies, moneyPanel = null, modalBroke = null, propCount = null, propList = null;
 var Elon = /** @class */ (function () {
     function Elon() {
