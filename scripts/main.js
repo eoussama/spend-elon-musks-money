@@ -1,4 +1,4 @@
-var ELONs_NET_WORTH = 19600000000.00;
+var ELONs_NET_WORTH = 1; //19600000000.00;
 var goodies, moneyPanel = null, modalBroke = null, propCount = null, propList = null;
 var Elon = /** @class */ (function () {
     function Elon() {
@@ -7,7 +7,7 @@ var Elon = /** @class */ (function () {
         this.money -= money;
         moneyPanel.textContent = "$" + this.money.formatMoney(2, '.', ',');
         if (this.money < 1) {
-            document.querySelector('main.container').style.overflowY = 'hidden';
+            document.body.style.overflowY = 'hidden';
             modalBroke.style.top = window.scrollY + 'px';
             modalBroke.style.display = 'block';
             propCount.textContent = "Properties [" + Elon.getPropertiesCount() + "]";
@@ -17,8 +17,7 @@ var Elon = /** @class */ (function () {
                 var _row = document.createElement('tr'), _col_prop = document.createElement('td'), _col_amount = document.createElement('td'), _col_worth = document.createElement('td');
                 _col_prop.textContent = _property.name;
                 _col_amount.textContent = _property.amount.toString();
-                _col_worth.textContent = "$" + (_property.amount * getGoodiePrice(_property.name)).formatMoney(2, '.', ',').toString();
-                ;
+                _col_worth.textContent = "$" + (_property.amount * getGoodiePrice(_property.name)).formatMoney(2, '.', ',');
                 _col_worth.classList.add('text-red', 'text-bold');
                 _row.appendChild(_col_prop);
                 _row.appendChild(_col_amount);
@@ -84,7 +83,7 @@ var Goodie = /** @class */ (function () {
 function reboot() {
     Elon.money = ELONs_NET_WORTH;
     Elon.properties = [];
-    document.querySelector('main.container').style.overflowY = 'auto';
+    document.body.style.overflowY = 'auto';
     modalBroke.style.display = 'none';
     moneyPanel.textContent = "$" + Elon.money.formatMoney(2, '.', ',');
 }

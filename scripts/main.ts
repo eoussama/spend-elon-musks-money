@@ -1,4 +1,4 @@
-const ELONs_NET_WORTH = 19600000000.00;
+const ELONs_NET_WORTH = 1;//19600000000.00;
 var
     goodies: Goodie[],
     moneyPanel: any = null,
@@ -16,7 +16,7 @@ class Elon {
         moneyPanel.textContent = `$${this.money.formatMoney(2, '.', ',')}`;
 
         if(this.money < 1) {
-            document.querySelector('main.container').style.overflowY = 'hidden';
+            document.body.style.overflowY = 'hidden';
             modalBroke.style.top = window.scrollY + 'px';
             modalBroke.style.display = 'block';
 
@@ -32,7 +32,7 @@ class Elon {
                 
                 _col_prop.textContent = _property.name;
                 _col_amount.textContent = _property.amount.toString();
-                _col_worth.textContent = "$" + (_property.amount * getGoodiePrice(_property.name)).formatMoney(2, '.', ',').toString());
+                _col_worth.textContent = "$" + (_property.amount * getGoodiePrice(_property.name)).formatMoney(2, '.', ',');
                 _col_worth.classList.add('text-red', 'text-bold');
 
                 _row.appendChild(_col_prop);
@@ -105,7 +105,7 @@ class Goodie {
 function reboot() {
     Elon.money = ELONs_NET_WORTH;
     Elon.properties = [];
-    document.querySelector('main.container').style.overflowY = 'auto';
+    document.body.style.overflowY = 'auto';
     modalBroke.style.display = 'none';
     moneyPanel.textContent = `$${Elon.money.formatMoney(2, '.', ',')}`;
 }
