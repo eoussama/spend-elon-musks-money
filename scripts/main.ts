@@ -1,11 +1,87 @@
-var moneyPanel: any = null;
+const ELONs_NET_WORTH = 19600000000.00;
+var
+    goodies: Goodie[],
+    moneyPanel: any = null,
+    modalBroke: any = null,
+    propCount: any = null,
+    propList: any = null;
+
 
 class Elon {
-    static money: number = 19600000000.00;
+    static money: number = ELONs_NET_WORTH;
+    static properties: Property[] = [];
 
     static Pay(money) {
         this.money -= money;
         moneyPanel.textContent = `$${this.money.formatMoney(2, '.', ',')}`;
+
+        if(this.money < 1) {
+            document.querySelector('main.container').style.overflowY = 'hidden';
+            modalBroke.style.top = window.scrollY + 'px';
+            modalBroke.style.display = 'block';
+
+            propCount.textContent = `Properties [${Elon.getPropertiesCount()}]`;
+            propList.innerHTML = "";
+
+            for(let _property of Elon.properties) {
+                let
+                    _row = document.createElement('tr'),
+                    _col_prop = document.createElement('td'),
+                    _col_amount = document.createElement('td'),
+                    _col_worth = document.createElement('td');
+                
+                _col_prop.textContent = _property.name;
+                _col_amount.textContent = _property.amount.toString();
+                _col_worth.textContent = "$" + (_property.amount * getGoodiePrice(_property.name)).formatMoney(2, '.', ',').toString());
+                _col_worth.classList.add('text-red', 'text-bold');
+
+                _row.appendChild(_col_prop);
+                _row.appendChild(_col_amount);
+                _row.appendChild(_col_worth);
+                propList.appendChild(_row);
+            }
+        }
+    }
+
+    static hasProperty(name): boolean {
+        for(let _property of Elon.properties) {
+            if(_property.name === name)
+                return true;
+        }
+    
+        return false;
+    }
+
+    static giveProperty(name) {
+        if(this.hasProperty(name) === false)
+            Elon.properties.push(new Property(name, 1));
+        else {
+            for(let _property of Elon.properties) {
+                if(_property.name === name) {
+                    _property.amount++;
+                    break;
+                }
+            }
+        }
+    }
+
+    static getPropertiesCount(): number {
+        let _count: number = 0;
+
+        for(let _property of Elon.properties)
+            _count += _property.amount;
+
+        return _count;
+    }
+}
+
+class Property {
+    name: string = "";
+    amount: number = 0;
+
+    constructor(name: string, amount: number) {
+        this.name = name;
+        this.amount = amount;
     }
 }
 
@@ -21,8 +97,26 @@ class Goodie {
     }
 
     Buy(): void {
+        Elon.giveProperty(this.name);
         Elon.Pay(this.price);
     }
+}
+
+function reboot() {
+    Elon.money = ELONs_NET_WORTH;
+    Elon.properties = [];
+    document.querySelector('main.container').style.overflowY = 'auto';
+    modalBroke.style.display = 'none';
+    moneyPanel.textContent = `$${Elon.money.formatMoney(2, '.', ',')}`;
+}
+
+function getGoodiePrice(name): number {
+    for(let _goodie of goodies) {
+        if(_goodie.name === name)
+            return _goodie.price;
+    }
+
+    return 0;
 }
 
 Number.prototype.formatMoney = function(c, d, t) {
@@ -39,7 +133,13 @@ Number.prototype.formatMoney = function(c, d, t) {
  };
 
 window.addEventListener('load', () => {
-    const goodies: Goodie[] = [
+    const
+        target = document.getElementById('target'),
+        moneyBanner = document.querySelector('div.money-banner')
+        propCount = document.getElementById('propCount'),
+        propList = document.getElementById('propList');
+    
+    goodies = [
         new Goodie("Cup of Coffee", 3.63, "coffee.jpg"),
         new Goodie("Pencile", 0.36, "pencile.jpg"),
         new Goodie("Glasses", 39.50, "glasses.jpg"),
@@ -53,7 +153,7 @@ window.addEventListener('load', () => {
         new Goodie("Game PC", 700.00, "gamer_pc.jpg"),
         new Goodie("Helicopter", 415000.00, "helicopter.jpg"),
         new Goodie("Castle", 3412300.00, "castle.jpg"),
-        new Goodie("Private Rocket", 36015000.00, "rocket.jpg"),
+        new Goodie("Private Rocket", 936015000.00, "rocket.jpg"),
         new Goodie("iMac Pro", 4999.00, "imac_pro.jpg"),
         new Goodie("iPhone X", 1149.00, "iphonex.jpg"),
         new Goodie("Private Island", 169727.00, "island.jpg"),
@@ -67,7 +167,7 @@ window.addEventListener('load', () => {
         new Goodie("PS4 Pro", 399.00, "ps4_pro.jpg"),
         new Goodie("The Pyramids", 5000000000.00, "pyramides.jpg"),
         new Goodie("Automata", 95600.06, "robot.jpg"),
-        new Goodie("Portal", 56999631.00, "portal.jpg"),
+        new Goodie("Portal", 656999631.00, "portal.jpg"),
         new Goodie("Rockstar Games", 6000500000.00, "rockstar_games.png"),
         new Goodie("Submarine", 2000000000.00, "submarine.jpg"),
         new Goodie("Swiss Army Knife", 19.99, "swiss_army_knife.jpg"),
@@ -76,10 +176,9 @@ window.addEventListener('load', () => {
         new Goodie("VR Headset", 799.00, "vr_headset.jpg"),
         new Goodie("XBOX One X", 499.00, "xbox_one_x.jpg"),
         new Goodie("Yacht", 275000000.00, "yacht.jpeg")
-    ],
-        target = document.getElementById('target'),
-        moneyBanner = document.querySelector('div.money-banner');
-        
+    ];
+
+    modalBroke = document.querySelector('div.modalBroke');
     moneyPanel = document.getElementById('cash');
     moneyPanel.textContent = `$${Elon.money.formatMoney(2, '.', ',')}`;
     goodies.forEach((_goodie) => {
@@ -124,10 +223,9 @@ window.addEventListener('load', () => {
     });
 
     window.addEventListener('scroll', (e) => {
-        if(window.scrollY >= 375) {
+        if(window.scrollY >= 375)
             moneyBanner.classList.add('stick');
-        } else {
+        else
             moneyBanner.classList.remove('stick');
-        }
     });
 });

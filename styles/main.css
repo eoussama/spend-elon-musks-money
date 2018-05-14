@@ -4,7 +4,12 @@
 img.portrait {
     border: 8px solid var(--darkColor);
     border-radius: 50%;
+
+    transition-property: filter;
+    transition-duration: 0.3s;
 }
+
+img.portrait:hover { filter: brightness(1.3); }
 
 div.money-banner {
     position: relative;
@@ -87,3 +92,71 @@ div.fold.goodie.unaffordable::after {
 }
 
 @keyframes fade { to { opacity: 0.7; } }
+
+/* #region Modal */
+div.modalBroke {
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 20 30px;
+    width: 100%;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.9);
+
+    z-index: 100;
+    opacity: 0;
+
+    animation-name: openFade;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+div.modalBroke div.context {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 600px;
+
+    transform: translate(-50%, -50%);
+}
+
+@keyframes openFade { to { opacity: 1; } }
+/* #endregion */
+
+div.results {
+    max-height: 200px;
+
+    overflow-y: auto;
+}
+
+table.table tr {
+    background-color: var(--lightColor);
+    color: var(--darkColor);
+}
+
+@media(max-width: 400px) {
+    h1.lead-5 { font-size: 25px; }
+
+    p { display: none; }
+    img.portrait { display: none; }
+
+    div.money-banner {
+        position: absolute;
+        left: 50%;
+        top: 70px;
+
+        width: 75%;
+
+        z-index: 99;
+        transform: translateX(-50%);
+    }
+
+    div.money-banner  span {
+        font-size: 14px !important;
+        letter-spacing: 5px !important;
+    }
+
+    main.container { padding: 30px 10px;}
+}
