@@ -31,3 +31,21 @@ div.money-banner span.money {
     transform: translate(-50%, -50%);
 }
 /* #endregion */
+
+span.cig {
+    position: absolute;
+    top: 0px;
+    right: -200px;
+
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    text-align: center;
+
+    transition-property: right;
+    transition-duration: 0.3s;
+}
+
+span.cig::before { content: '$'; }
+
+div.fold.goodie:hover span.cig { right: 0px; }
