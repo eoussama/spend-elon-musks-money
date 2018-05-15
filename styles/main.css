@@ -136,7 +136,7 @@ table.table tr {
     color: var(--darkColor);
 }
 
-@media(max-width: 400px) {
+@media(max-width: 600px) {
     h1.lead-5 { font-size: 25px; }
 
     p { display: none; }

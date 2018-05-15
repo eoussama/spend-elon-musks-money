@@ -1,5 +1,5 @@
 var ELONs_NET_WORTH = 19600000000.00;
-var goodies, moneyPanel = null, modalBroke = null, propCount = null, propList = null;
+var goodies, moneyPanel = null, modalBroke = null, propCount = null, propList = null, elonCount = null, elonProps = null;
 var Elon = /** @class */ (function () {
     function Elon() {
     }
@@ -46,6 +46,7 @@ var Elon = /** @class */ (function () {
                 }
             }
         }
+        updateProps();
     };
     Elon.getPropertiesCount = function () {
         var _count = 0;
@@ -86,6 +87,8 @@ function reboot() {
     document.body.style.overflowY = 'auto';
     modalBroke.style.display = 'none';
     moneyPanel.textContent = "$" + Elon.money.formatMoney(2, '.', ',');
+    elonCount.textContent = "Elon's properties [" + Elon.getPropertiesCount() + "]";
+    elonProps.innerHTML = "";
 }
 function getGoodiePrice(name) {
     for (var _i = 0, goodies_1 = goodies; _i < goodies_1.length; _i++) {
@@ -95,17 +98,31 @@ function getGoodiePrice(name) {
     }
     return 0;
 }
+function updateProps() {
+    elonCount.textContent = "Elon's properties [" + Elon.getPropertiesCount() + "]";
+    elonProps.innerHTML = "";
+    for (var _i = 0, _a = Elon.properties; _i < _a.length; _i++) {
+        var _property = _a[_i];
+        var _row = document.createElement('tr'), _col_prop = document.createElement('td'), _col_amount = document.createElement('td'), _col_worth = document.createElement('td');
+        _col_prop.textContent = _property.name;
+        _col_amount.textContent = _property.amount.toString();
+        _col_worth.textContent = "$" + (_property.amount * getGoodiePrice(_property.name)).formatMoney(2, '.', ',');
+        _col_worth.classList.add('text-red', 'text-bold');
+        _row.appendChild(_col_prop);
+        _row.appendChild(_col_amount);
+        _row.appendChild(_col_worth);
+        elonProps.appendChild(_row);
+    }
+}
 Number.prototype.formatMoney = function (c, d, t) {
     var n = this, c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "." : d, t = t == undefined ? "," : t, s = n < 0 ? "-" : "", i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))), j = (j = i.length) > 3 ? j % 3 : 0;
     return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
 };
 window.addEventListener('load', function () {
     var target = document.getElementById('target'), moneyBanner = document.querySelector('div.money-banner');
-    propCount = document.getElementById('propCount'),
-        propList = document.getElementById('propList');
     goodies = [
         new Goodie("Cup of Coffee", 3.63, "coffee.jpg"),
-        new Goodie("Pencile", 0.36, "pencile.jpg"),
+        new Goodie("Pencil", 0.36, "pencil.jpg"),
         new Goodie("Glasses", 39.50, "glasses.jpg"),
         new Goodie("Canon Camera", 456.00, "canon.jpg"),
         new Goodie("5 Gum", 1.49, "5gum.jpg"),
@@ -143,6 +160,10 @@ window.addEventListener('load', function () {
     ];
     modalBroke = document.querySelector('div.modalBroke');
     moneyPanel = document.getElementById('cash');
+    propCount = document.getElementById('propCount');
+    propList = document.getElementById('propList');
+    elonProps = document.getElementById('elonProps');
+    elonCount = document.getElementById('elonCount');
     moneyPanel.textContent = "$" + Elon.money.formatMoney(2, '.', ',');
     goodies.forEach(function (_goodie) {
         var fold = document.createElement('div'), fold_thumbnail = document.createElement('div'), img = document.createElement('img'), price = document.createElement('span'), fold_header = document.createElement('div'), h3 = document.createElement('h3'), button = document.createElement('button');

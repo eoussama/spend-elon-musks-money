@@ -4,7 +4,9 @@ var
     moneyPanel: any = null,
     modalBroke: any = null,
     propCount: any = null,
-    propList: any = null;
+    propList: any = null,
+    elonCount: any = null,
+    elonProps: any = null;
 
 
 class Elon {
@@ -63,6 +65,8 @@ class Elon {
                 }
             }
         }
+
+        updateProps();
     }
 
     static getPropertiesCount(): number {
@@ -108,6 +112,8 @@ function reboot() {
     document.body.style.overflowY = 'auto';
     modalBroke.style.display = 'none';
     moneyPanel.textContent = `$${Elon.money.formatMoney(2, '.', ',')}`;
+    elonCount.textContent = `Elon's properties [${Elon.getPropertiesCount()}]`;
+    elonProps.innerHTML = "";
 }
 
 function getGoodiePrice(name): number {
@@ -117,6 +123,29 @@ function getGoodiePrice(name): number {
     }
 
     return 0;
+}
+
+function updateProps(): void {
+    elonCount.textContent = `Elon's properties [${Elon.getPropertiesCount()}]`;
+    elonProps.innerHTML = "";
+
+    for(let _property of Elon.properties) {
+        let
+            _row = document.createElement('tr'),
+            _col_prop = document.createElement('td'),
+            _col_amount = document.createElement('td'),
+            _col_worth = document.createElement('td');
+        
+        _col_prop.textContent = _property.name;
+        _col_amount.textContent = _property.amount.toString();
+        _col_worth.textContent = "$" + (_property.amount * getGoodiePrice(_property.name)).formatMoney(2, '.', ',');
+        _col_worth.classList.add('text-red', 'text-bold');
+
+        _row.appendChild(_col_prop);
+        _row.appendChild(_col_amount);
+        _row.appendChild(_col_worth);
+        elonProps.appendChild(_row);
+    }
 }
 
 Number.prototype.formatMoney = function(c, d, t) {
@@ -135,13 +164,11 @@ Number.prototype.formatMoney = function(c, d, t) {
 window.addEventListener('load', () => {
     const
         target = document.getElementById('target'),
-        moneyBanner = document.querySelector('div.money-banner')
-        propCount = document.getElementById('propCount'),
-        propList = document.getElementById('propList');
+        moneyBanner = document.querySelector('div.money-banner');
     
     goodies = [
         new Goodie("Cup of Coffee", 3.63, "coffee.jpg"),
-        new Goodie("Pencile", 0.36, "pencile.jpg"),
+        new Goodie("Pencil", 0.36, "pencil.jpg"),
         new Goodie("Glasses", 39.50, "glasses.jpg"),
         new Goodie("Canon Camera", 456.00, "canon.jpg"),
         new Goodie("5 Gum", 1.49, "5gum.jpg"),
@@ -180,6 +207,11 @@ window.addEventListener('load', () => {
 
     modalBroke = document.querySelector('div.modalBroke');
     moneyPanel = document.getElementById('cash');
+    propCount = document.getElementById('propCount');
+    propList = document.getElementById('propList');
+    elonProps = document.getElementById('elonProps');
+    elonCount = document.getElementById('elonCount');
+
     moneyPanel.textContent = `$${Elon.money.formatMoney(2, '.', ',')}`;
     goodies.forEach((_goodie) => {
         let
