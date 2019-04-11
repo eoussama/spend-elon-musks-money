@@ -37,7 +37,7 @@
                         </a>
                         <div class="row" ng-controller="elon_money">
                             <div class="col s12">
-                                <span class="balance">{{money | currency}}</span>
+                                <span class="balance">{{ money | currency }}</span>
                             </div>
                         </div>
                     </div>
@@ -45,16 +45,16 @@
             </div>
         </header>
 
-        <section>
+        <section ng-controller="goodies">
             <div class="row">
-                <div class="col s3"></div>
+                <goodie ng-repeat="goodie in goodies" goodie="goodie"></goodie>
             </div>
         </section>
     </main>
 
     <!-- AngularJS. -->
     <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
-    
+
     <!-- Materialize. -->
     <script type="text/javascript" src="../bower_components/materialize/dist/js/materialize.min.js"></script>
 

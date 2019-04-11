@@ -4,26 +4,43 @@ import angular from "angular";
 
 (() => {
 
-    // On page load.
-    window.addEventListener('load', () => {
+    // Initializing the app.
+    const app = angular.module('elon', []);
 
-        // Loading the goodies.
-        fetch('goodies.json')
-            .then((res) => res.json())
+    app.controller('elon_money', function ($scope) {
+        $scope.money = Elon.money;
+    });
+
+    app.controller('goodies', function ($scope, $http) {
+
+        $http.get('goodies.json')
+            .then((response) => response.data)
             .then((data) => {
-
                 const goodies: Goodie[] = [];
 
                 // Creating the goodies.
                 data.forEach(goodie => goodies.push(new Goodie(goodie.Name, goodie.Price, goodie.Image)));
+                $scope.goodies = goodies;
             });
+    });
 
-        });
-        
-        // Initializing the app.
-        const app = angular.module('elon', []);
-    
-        app.controller('elon_money', function($scope) {
-            $scope.money = Elon.money;
-        });
-    })();
+    app.component('goodie', {
+        template: `
+            <div class="col s12 m6 l3">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{ $ctrl.goodie.image }}">
+                        <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title"> {{ $ctrl.goodie.name }} </span>
+                        <p>{{ $ctrl.goodie.price | currency }}</p>
+                    </div>
+                </div>
+            </div>
+        `,
+        bindings: {
+            goodie: '<'
+        }
+    });
+})();
