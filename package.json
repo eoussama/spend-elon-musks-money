@@ -1,0 +1,24 @@
+{
+  "name": "spend-elon-musks-money",
+  "version": "1.0.0",
+  "description": "A website were you can virtually spend Elon Musk's money.",
+  "main": "src/main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EOussama/spend-elon-musks-money.git"
+  },
+  "keywords": [
+    "elonmusk",
+    "money",
+    "shopping"
+  ],
+  "author": "EOussama",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/EOussama/spend-elon-musks-money/issues"
+  },
+  "homepage": "https://github.com/EOussama/spend-elon-musks-money#readme"
+}

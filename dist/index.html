@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="application-name" content="Spend Elon Musk's money">
+    <meta name="author" content="EOussama">
+    <meta name="description" content="A website were you can virtually spend Elon Musk's money.">
+    <meta name="keywords" content="Money, Elon Musk, shopping, rich">
+
+    <link href="styles/eomponents.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="shortcut icon" type="image/png" href="images/elon_musk.jpg">
+
+    <title>Spend Elon Musk's money</title>
+</head>
+
+<body>
+    <div class="modalBroke">
+        <div class="context text-center text-light">
+            <h1 class="lead-5">Elon is broke!</h1>
+            <p>How did it feel to have all the money you could ever ask for at your command? how did it feel like having
+                your own island, fancy cars, and tech? these guys, such as Elon Musk, have worked themselves off,
+                defeating all the odds, and building those massive of fortune empires, it all came from hard work, and
+                you could be the next legend to rise up with humanity too, look upon your future, and never give in to
+                laziness, limitations, or hate words, why do you start right now? resume that one project you never had
+                the chance of completing, that one project you dropped because you got fed up with supporting due to
+                lack of interest, or simply, not being able to keep up with...</p>
+
+            <div class="mt-2 buttons flex flex-gap-skip flex-gap-3">
+                <button class="btn" onclick="reboot();">Whatever</button>
+                <button class="btn" onclick="window.close();">Go by the advice</button>
+            </div>
+
+            <div class="properties mt-3">
+                <h1 id="propCount">Properties [0]</h1>
+                <div class="results">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Amount</th>
+                                <th>Worth</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="propList">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="header text-center mb-3 text-lineheight-normal">
+            <h1 class="lead-5 text-dark">Spend Elon Musk's money</h1>
+            <p class="text-gray">Press the images below, and know more about this legend.</p>
+            <a href="https://en.wikipedia.org/wiki/Elon_Musk" target="_blank"><img class="portrait mt-2"
+                    src="images/elon_musk.jpg" alt="Elon Musk"></a>
+
+            <div class="money-banner">
+                <span id="cash" class="money">
+                    $19,600,000,000.00
+                </span>
+            </div>
+        </div>
+
+        <div class="fold mb-3">
+            <div class="fold-header bg-dark-weak">
+                <h1>Goodies</h1>
+            </div>
+            <div id="target" class="fold-body grid grid-gap-1">
+
+            </div>
+        </div>
+
+
+        <div class="fold">
+            <div class="fold-header bg-dark-weak">
+                <h1 id="elonCount">Elon's properties [0]</h1>
+            </div>
+
+            <div class="fold-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Amount</th>
+                            <th>Worth</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="elonProps">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script type="text/javascript" src="scripts/eomponents.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
+</body>
+
+</html>

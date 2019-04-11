@@ -1,0 +1,22 @@
+{
+  "name": "spend-elon-musks-money",
+  "description": "A website were you can virtually spend Elon Musk's money.",
+  "main": "src/main.ts",
+  "authors": [
+    "EOussama"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "elonmusk",
+    "money",
+    "shopping"
+  ],
+  "homepage": "https://github.com/EOussama/spend-elon-musks-money",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
