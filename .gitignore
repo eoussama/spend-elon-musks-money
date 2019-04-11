@@ -1,0 +1,10 @@
+.cache
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+dist
+node_modules
+bower_components
