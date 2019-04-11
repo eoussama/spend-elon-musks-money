@@ -1,3 +1,5 @@
+import { Goodie } from "./modules/Goodie";
+
 (() => {
 
     // On page load.
@@ -8,7 +10,10 @@
         .then((res) => res.json())
         .then((data) => {
 
-            console.log(data);
+            const goodies: Goodie[] = [];
+
+            // Creating the goodies.
+            data.forEach(goodie => goodies.push(new Goodie(goodie.Name, goodie.Price, goodie.Image)));
         });
     });
 })();
