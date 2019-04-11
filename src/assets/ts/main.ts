@@ -21,7 +21,7 @@ import $ from "jquery";
     // Initializing the app.
     const app = angular.module('elon', []);
 
-    app.controller('elon', function ($scope, $http) {
+    app.controller('elon', ['$scope', '$http', function ($scope, $http) {
 
         $http.get('goodies.json')
             .then((response) => response.data)
@@ -29,11 +29,15 @@ import $ from "jquery";
                 const goodies: Goodie[] = [];
 
                 // Creating the goodies.
-                data.forEach(goodie => goodies.push(new Goodie(goodie.Name, goodie.Price, goodie.Image)));
+                data.forEach((goodie, index) => goodies.push(new Goodie(index, goodie.Name, goodie.Price, goodie.Image)));
+
                 $scope.goodies = goodies;
                 $scope.money = Elon.money;
+                $scope.properties = Elon.properties;
+
+                $scope.totalProperties = () => $scope.properties.reduce((total, property) => total + property.quantity, 0);
             });
-    });
+    }]);
 
     app.component('goodie', {
         template: `

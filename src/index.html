@@ -53,6 +53,36 @@
                 <goodie ng-repeat="goodie in goodies" goodie="goodie"></goodie>
             </div>
         </section>
+
+        <section class="properties">
+            <div class="card-panel grey lighten-3">
+                <div class="row">
+                    <div class="col s12">
+                        <h3 class="center-align">Properties [{{ totalProperties() }}]</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <table class="stripped">
+                            <thead>
+                                <tr>
+                                    <th class="center-align">Property</th>
+                                    <th class="center-align">Quantity</th>
+                                    <th class="center-align">Accumulated Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="property in properties">
+                                    <td class="center-align">{{ property.goodie.name }}</td>
+                                    <td class="center-align">{{ property.quantity }}</td>
+                                    <td class="center-align">{{ property.quantity * property.goodie.price | currency }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Materialize. -->

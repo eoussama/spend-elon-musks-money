@@ -27,9 +27,49 @@ export class Elon {
      */
     static buy(goodie: Goodie) {
 
-        if (goodie.price < Elon.money) {
+        if (goodie.price < this.money) {
 
-            Elon.money -= goodie.price;
+            this.money -= goodie.price;
+            this.addProperty(goodie);
+        }
+    }
+
+    /**
+     * Check if Elon has a said property.
+     * 
+     * @param goodie The goodie to check the availability for.
+     */
+    static hasProperty(goodie: Goodie) {
+
+        let hasProp: boolean = false;
+
+        this.properties.forEach((property: Property) => {
+
+            if (property.goodie.id === goodie.id) {
+                hasProp = true;
+            }
+        });
+
+        return hasProp;
+    }
+
+    /**
+     * Adding a new property.
+     * 
+     * @param goodie The goodie to add as a property.
+     */
+    static addProperty(goodie: Goodie) {
+
+        if (this.hasProperty(goodie)) {
+
+            this.properties.forEach((property: Property) => {
+
+                if (property.goodie.id === goodie.id) {
+                    property.quantity++;
+                }
+            });
+        } else {
+            this.properties.push(new Property(goodie, 1));
         }
     }
 }
