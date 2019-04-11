@@ -54,14 +54,14 @@ import $ from "jquery";
                 </div>
             </div>
         `,
-        controller: ($scope) => {
+        controller: ['$scope', ($scope) => {
 
             $scope.buy = (goodie: Goodie) => {
 
                 Elon.buy(goodie);
                 $scope.$parent.$parent.money = Elon.money;
             }
-        },
+        }],
         bindings: {
             goodie: '<'
         }
