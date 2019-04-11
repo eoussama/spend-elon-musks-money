@@ -18,3 +18,9 @@ gulp.task('css', function () {
         .pipe(postcss(processors))
         .pipe(gulp.dest('./dist/assets/css'));
 });
+
+
+// The CSS compiler on watch mode.
+gulp.task('css:watch', function () {
+    return gulp.watch('./src/sass/main.scss', gulp.series('css'));
+});

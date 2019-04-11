@@ -4,7 +4,8 @@
   "description": "A website were you can virtually spend Elon Musk's money.",
   "main": "src/main.ts",
   "scripts": {
-    "css": "npx gulp css"
+    "css": "npx gulp css",
+    "css:watch": "npx gulp css:watch"
   },
   "repository": {
     "type": "git",
