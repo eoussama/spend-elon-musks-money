@@ -13,11 +13,8 @@ gulp.task('css', function () {
         cssnano
     ];
 
-    return gulp.src('./src/*.scss')
+    return gulp.src('./src/sass/main.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss(processors))
-        .pipe(gulp.dest('./dest'));
+        .pipe(gulp.dest('./dist/assets/css'));
 });
-
-// The default task.
-gulp.task('default', ['css']);

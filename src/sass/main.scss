@@ -1,0 +1,23 @@
+header {
+    margin-top: 50px;
+
+    .row {
+       margin-top: 50px;
+
+       .balance {
+            font-size: 35px;
+            border: 6px solid;
+            border-radius: 3%;
+            width: 300px;
+            padding: 10px 15px;
+            font-weight: bold;
+       }
+    }
+
+    img {
+        margin-top: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 6px solid;
+    }
+}
