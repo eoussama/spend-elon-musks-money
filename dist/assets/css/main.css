@@ -1,162 +1,24 @@
-::selection { background-color: var(--grayColorWeak); }
+header {
+    margin-top: 50px;
+}
 
-/* #region header */
-img.portrait {
-    border: 8px solid var(--darkColor);
+header img {
+    margin-top: 50px;
     border-radius: 50%;
-
-    transition-property: filter;
-    transition-duration: 0.3s;
+    cursor: pointer;
+    border: 6px solid;
 }
 
-img.portrait:hover { filter: brightness(1.3); }
+header .row {
 
-div.money-banner {
-    position: relative;
-    width: 500px;
-    height: 50px;
-    margin: 30px auto;
-
-    border: 5px solid var(--lightColor);
-    border-radius: 5px;
-
-    background-color: var(--darkColor);
+    margin-top: 50px;
 }
 
-div.money-banner span.money {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-
-    color: var(--lightColor);
-
-    font-size: 30px;
+header .balance {
+    font-size: 35px;
+    border: 6px solid;
+    border-radius: 3%;
+    width: 300px;
+    padding: 10px 15px;
     font-weight: bold;
-    letter-spacing: 8px;
-
-    transform: translate(-50%, -50%);
-}
-
-div.money-banner.stick {
-    position: fixed;
-    top: 8px;
-    left: 50%;
-
-    transform: translateX(-50%);
-    z-index: 99;
-}
-/* #endregion */
-
-span.cig {
-    position: absolute;
-    top: 0px;
-    right: -220px;
-
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-
-    text-align: center;
-
-    transition-property: right;
-    transition-duration: 0.3s;
-}
-
-span.cig::before { content: '$'; }
-
-div.fold.goodie:hover span.cig { right: 0px; }
-
-div.fold.goodie.unaffordable::after {
-    content: "Elon can't afford this";
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    padding-top: 120%;
-
-    background-color: red;
-    color: var(--lightColor);
-
-    font-size: 25px;
-    font-weight: bold;
-    text-align: center;
-    line-height: normal;
-
-    transform: translate(-50%, -50%);
-    opacity: 0;
-
-    animation-name: fade;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes fade { to { opacity: 0.7; } }
-
-/* #region Modal */
-div.modalBroke {
-    display: none;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    padding: 20 30px;
-    width: 100%;
-    height: 100vh;
-
-    background-color: rgba(0, 0, 0, 0.9);
-
-    z-index: 100;
-    opacity: 0;
-
-    animation-name: openFade;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-}
-
-div.modalBroke div.context {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 600px;
-
-    transform: translate(-50%, -50%);
-}
-
-@keyframes openFade { to { opacity: 1; } }
-/* #endregion */
-
-div.results {
-    max-height: 200px;
-
-    overflow-y: auto;
-}
-
-table.table tr {
-    background-color: var(--lightColor);
-    color: var(--darkColor);
-}
-
-@media(max-width: 600px) {
-    h1.lead-5 { font-size: 25px; }
-
-    p { display: none; }
-    img.portrait { display: none; }
-
-    div.money-banner {
-        position: absolute;
-        left: 50%;
-        top: 70px;
-
-        width: 75%;
-
-        z-index: 99;
-        transform: translateX(-50%);
-    }
-
-    div.money-banner  span {
-        font-size: 14px !important;
-        letter-spacing: 5px !important;
-    }
-
-    main.container { padding: 30px 10px;}
 }

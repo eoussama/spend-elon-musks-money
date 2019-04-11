@@ -20,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/EOussama/spend-elon-musks-money/issues"
   },
-  "homepage": "https://github.com/EOussama/spend-elon-musks-money#readme"
+  "homepage": "https://github.com/EOussama/spend-elon-musks-money#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.5.1",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "typescript": "^3.4.3"
+  }
 }
