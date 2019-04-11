@@ -26,9 +26,13 @@
     },
     "homepage": "https://github.com/EOussama/spend-elon-musks-money#readme",
     "devDependencies": {
+        "@types/angular": "^1.6.54",
         "autoprefixer": "^9.5.1",
         "parcel-bundler": "^1.12.3",
         "sass": "^1.18.0",
         "typescript": "^3.4.3"
+    },
+    "dependencies": {
+        "angular": "^1.7.8"
     }
 }

@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <main class="container">
+    <main class="container" ng-app="elon">
 
         <header>
             <div class="row">
@@ -35,9 +35,9 @@
                         <a href="https://en.wikipedia.org/wiki/Elon_Musk" target="_blank">
                             <img src="assets/img/elon_musk.jpg" alt="Elon Musk">
                         </a>
-                        <div class="row">
+                        <div class="row" ng-controller="elon_money">
                             <div class="col s12">
-                                <span class="balance">$19,600,000,000.00</span>
+                                <span class="balance">{{money | currency}}</span>
                             </div>
                         </div>
                     </div>
@@ -52,6 +52,9 @@
         </section>
     </main>
 
+    <!-- AngularJS. -->
+    <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+    
     <!-- Materialize. -->
     <script type="text/javascript" src="../bower_components/materialize/dist/js/materialize.min.js"></script>
 
