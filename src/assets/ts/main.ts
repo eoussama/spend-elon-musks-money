@@ -27,9 +27,9 @@ import angular from "angular";
                 <div class="card">
                     <div class="card-image">
                         <img src="{{ $ctrl.goodie.image }}">
-                        <a  ng-click="buy($ctrl.goodie)" class="btn-floating halfway-fab waves-effect waves-light green" title="buy"><i class="material-icons">attach_money</i></a>
-                    </div>
-                    <div class="card-content">
+                        <a ng-click="buy($ctrl.goodie)"  ng-class="{true: 'green', false: 'red'}[$ctrl.goodie.price <= $parent.$parent.money]" class="btn-floating halfway-fab waves-effect waves-light" title="buy"><i class="material-icons">attach_money</i></a>
+                        </div>
+                        <div class="card-content">
                         <span class="card-title"><b>{{ $ctrl.goodie.name }}</b></span>
                         <p class="grey-text">{{ $ctrl.goodie.price | currency }}</p>
                     </div>
