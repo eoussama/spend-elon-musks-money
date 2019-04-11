@@ -1,9 +1,28 @@
-export class Property {
-    name: string = "";
-    amount: number = 0;
+import { Goodie } from "./Goodie";
 
-    constructor(name: string, amount: number) {
-        this.name = name;
-        this.amount = amount;
+/**
+ * The Property class.
+ */
+export class Property {
+
+    /**
+     * The goodie.
+     */
+    goodie: Goodie = null;
+
+    /**
+     * The quanity.
+     */
+    quantity: number = 0;
+
+    /**
+     * Creating a new property.
+     * 
+     * @param goodie The goodie.
+     * @param quantity The quantity.
+     */
+    constructor(goodie: Goodie, quantity: number) {
+        this.goodie = goodie;
+        this.quantity = quantity;
     }
 }

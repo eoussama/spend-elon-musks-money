@@ -1,23 +1,37 @@
 header {
+    $color-dark: rgb(54, 55, 77);
+    color: $color-dark;
+
     margin-top: 50px;
 
     .row {
        margin: 80px 0;
 
        .balance {
-            font-size: 35px;
-            border: 6px solid;
+            border: 6px solid $color-dark;
             border-radius: 3%;
-            width: 300px;
-            padding: 10px 15px;
+            font-size: 35px;
             font-weight: bold;
+            padding: 10px 15px;
+            width: 300px;
        }
     }
 
-    img {
-        margin-top: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-        border: 6px solid;
+    a {
+        color: $color-dark;
+
+        img {
+            border: 6px solid;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-top: 50px;
+            opacity: .8;
+            transition-duration: .3s;
+            transition-property: opacity;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
     }
 }
