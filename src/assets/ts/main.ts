@@ -30,11 +30,11 @@ import angular from "angular";
                 <div class="card">
                     <div class="card-image">
                         <img src="{{ $ctrl.goodie.image }}">
-                        <a class="btn-floating halfway-fab waves-effect waves-light red"></a>
+                        <a class="btn-floating halfway-fab waves-effect waves-light green" title="buy"><i class="material-icons">attach_money</i></a>
                     </div>
                     <div class="card-content">
-                        <span class="card-title"> {{ $ctrl.goodie.name }} </span>
-                        <p>{{ $ctrl.goodie.price | currency }}</p>
+                        <span class="card-title"><b>{{ $ctrl.goodie.name }}</b></span>
+                        <p class="grey-text">{{ $ctrl.goodie.price | currency }}</p>
                     </div>
                 </div>
             </div>
