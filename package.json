@@ -4,6 +4,7 @@
     "description": "A website were you can virtually spend Elon Musk's money.",
     "main": "src/main.ts",
     "scripts": {
+        "init": "npm install && bower install",
         "dev": "npx parcel src/index.html",
         "build": "npx parcel build --public-url \"./\" src/index.html",
         "data": "cp data/goodies.json dist/goodies.json",
