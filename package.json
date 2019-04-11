@@ -1,33 +1,33 @@
 {
-  "name": "spend-elon-musks-money",
-  "version": "1.0.0",
-  "description": "A website were you can virtually spend Elon Musk's money.",
-  "main": "src/main.ts",
-  "scripts": {
-    "css": "npx gulp css",
-    "css:watch": "npx gulp css:watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EOussama/spend-elon-musks-money.git"
-  },
-  "keywords": [
-    "elonmusk",
-    "money",
-    "shopping"
-  ],
-  "author": "EOussama",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/EOussama/spend-elon-musks-money/issues"
-  },
-  "homepage": "https://github.com/EOussama/spend-elon-musks-money#readme",
-  "devDependencies": {
-    "autoprefixer": "^9.5.1",
-    "cssnano": "^4.1.10",
-    "gulp": "^4.0.0",
-    "gulp-postcss": "^8.0.0",
-    "gulp-sass": "^4.0.2",
-    "typescript": "^3.4.3"
-  }
+    "name": "spend-elon-musks-money",
+    "version": "1.0.0",
+    "description": "A website were you can virtually spend Elon Musk's money.",
+    "main": "src/main.ts",
+    "scripts": {
+        "dev": "npx parcel src/index.html",
+        "build": "npx parcel build src/index.html",
+        "clean": "rm -rf ./dist"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/EOussama/spend-elon-musks-money.git"
+    },
+    "keywords": [
+        "elonmusk",
+        "money",
+        "shopping"
+    ],
+    "author": "EOussama",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/EOussama/spend-elon-musks-money/issues"
+    },
+    "homepage": "https://github.com/EOussama/spend-elon-musks-money#readme",
+    "devDependencies": {
+        "autoprefixer": "^9.5.1",
+        "parcel-bundler": "^1.12.3",
+        "postcss-modules": "^1.4.1",
+        "sass": "^1.18.0",
+        "typescript": "^3.4.3"
+    }
 }
