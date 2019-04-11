@@ -29,7 +29,7 @@ export class Elon {
 
         if (goodie.price < Elon.money) {
 
-            Elon.money -= goodie.price;        
+            Elon.money -= goodie.price;
         }
     }
 }

@@ -21,6 +21,6 @@
   ],
   "dependencies": {
     "materialize": "^1.0.0",
-    "angular": "angularjs#^1.7.8"
+    "jquery": "^3.4.0"
   }
 }

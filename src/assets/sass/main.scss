@@ -1,4 +1,6 @@
+
 header {
+
     $color-dark: rgb(54, 55, 77);
     color: $color-dark;
 
@@ -14,7 +16,26 @@ header {
             font-weight: bold;
             padding: 10px 15px;
             width: 300px;
-       }
+            transition-duration: .3s;
+            transition-property: width;
+
+            &.sticky {
+                left: 50%;
+                position: fixed;
+                top: 20px;
+                transform: translateX(-50%);
+                width: 350px;
+                z-index: 5;
+            }
+            
+            @media screen and (max-width: 450px) {
+                font-size: 20px;
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+            margin: 40px 0;
+        }
     }
 
     a {
@@ -28,10 +49,21 @@ header {
             opacity: .8;
             transition-duration: .3s;
             transition-property: opacity;
-
+            
             &:hover {
                 opacity: 1;
             }
+            
+            @media screen and (max-width: 450px) {
+                margin-top: 20px;
+                width: 200px;
+            }
+        }
+    }
+
+    h3 {
+        @media screen and (max-width: 450px) {
+            font-size: 30px;
         }
     }
 }
