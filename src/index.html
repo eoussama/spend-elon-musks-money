@@ -28,7 +28,7 @@
 </head>
 
 <body>
-    <main class="container" ng-app="elon">
+    <main class="container" ng-app="elon" ng-controller="elon">
 
         <header>
             <div class="row">
@@ -38,7 +38,7 @@
                         <a href="https://en.wikipedia.org/wiki/Elon_Musk" target="_blank">
                             <img src="assets/img/elon_musk.jpg" alt="Elon Musk">
                         </a>
-                        <div class="row" ng-controller="elon_money">
+                        <div class="row">
                             <div class="col s12">
                                 <span class="balance">{{ money | currency }}</span>
                             </div>
@@ -48,7 +48,7 @@
             </div>
         </header>
 
-        <section ng-controller="goodies">
+        <section>
             <div class="row">
                 <goodie ng-repeat="goodie in goodies" goodie="goodie"></goodie>
             </div>

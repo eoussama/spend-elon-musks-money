@@ -7,20 +7,17 @@ import angular from "angular";
     // Initializing the app.
     const app = angular.module('elon', []);
 
-    app.controller('elon_money', function ($scope) {
-        $scope.money = Elon.money;
-    });
-
-    app.controller('goodies', function ($scope, $http) {
+    app.controller('elon', function ($scope, $http) {
 
         $http.get('goodies.json')
             .then((response) => response.data)
             .then((data) => {
                 const goodies: Goodie[] = [];
-
+    
                 // Creating the goodies.
                 data.forEach(goodie => goodies.push(new Goodie(goodie.Name, goodie.Price, goodie.Image)));
                 $scope.goodies = goodies;
+                $scope.money = Elon.money;
             });
     });
 
@@ -30,7 +27,7 @@ import angular from "angular";
                 <div class="card">
                     <div class="card-image">
                         <img src="{{ $ctrl.goodie.image }}">
-                        <a class="btn-floating halfway-fab waves-effect waves-light green" title="buy"><i class="material-icons">attach_money</i></a>
+                        <a  ng-click="buy($ctrl.goodie)" class="btn-floating halfway-fab waves-effect waves-light green" title="buy"><i class="material-icons">attach_money</i></a>
                     </div>
                     <div class="card-content">
                         <span class="card-title"><b>{{ $ctrl.goodie.name }}</b></span>
@@ -39,6 +36,14 @@ import angular from "angular";
                 </div>
             </div>
         `,
+        controller: ($scope) => {
+
+            $scope.buy = (goodie: Goodie) => {
+                
+                Elon.buy(goodie);
+                $scope.$parent.$parent.money = Elon.money;
+            }
+        },
         bindings: {
             goodie: '<'
         }

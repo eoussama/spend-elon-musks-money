@@ -27,6 +27,6 @@ export class Elon {
      */
     static buy(goodie: Goodie) {
 
-        
+        Elon.money -= goodie.price;        
     }
 }
